@@ -45,6 +45,11 @@ public class Main {
             int minDist = pq.peek().dist;
             pq.poll();
 
+            if (minIndex == E) {
+                System.out.println(dist[minIndex]);
+                return;
+            }
+
             // 최소값이 아니면 굳이 볼 필요 없다. 이미 살펴본 것은 제거
             if (dist[minIndex] != minDist) continue;
 
