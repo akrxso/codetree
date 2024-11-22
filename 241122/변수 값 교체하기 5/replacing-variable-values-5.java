@@ -3,7 +3,7 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         int a =2;
         int b =6;
-        b = a;
+        a = b;
         System.out.println(a);
         System.out.println(b);
     }
