@@ -5,6 +5,7 @@ public class Main {
 
     static List<Node>[] graph = new List[MAX_N + 1];
     static int[] dist = new int[MAX_N + 1];
+    static int[] abcDist = new int[MAX_N + 1];
 
     static int N;
     static int M;
@@ -35,11 +36,21 @@ public class Main {
             graph[end].add(new Node(start, dist));
         }
 
-        
+        // a, b, c로부터 각 정점까지의 최단 거리 중 최솟값을 저장할
+        // minDist 배열을 전부 INT_MAX로 초기화한다.
         for (int i = 1; i <= N; i++) {
-            if (i == a || i == b || i == c) continue;
-            getPath(i);
+            abcDist[i] = Integer.MAX_VALUE;
         }
+
+        getPath(a);
+        getPath(b);
+        getPath(c);
+
+        int ans = Integer.MIN_VALUE;
+        for (int i = 1; i <= N; i++) {
+            ans = Math.max(ans, abcDist[i]);
+        }
+        
         System.out.println(max);
     }
 
@@ -69,10 +80,9 @@ public class Main {
             }
         }
 
-        int min = Math.min(dist[a], dist[b]);
-        min = Math.min(min, dist[c]);
-
-        max = Math.max(max, min);
+        for (int i = 1; i <= N; i++) {
+            abcDist[i] = Math.min(abcDist[i], dist[i]);
+        }
     }
 
     static class Node {
