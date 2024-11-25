@@ -12,7 +12,6 @@ public class Main {
     static int a;
     static int b;
     static int c;
-    static int max = 0;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -51,7 +50,7 @@ public class Main {
             ans = Math.max(ans, abcDist[i]);
         }
         
-        System.out.println(max);
+        System.out.println(ans);
     }
 
     static void getPath(int startIndex) {
