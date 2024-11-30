@@ -11,16 +11,16 @@ public class Main {
     static int[] dc = {0, -1, 0, 1};
 
     static int N;
-    static int A;
-    static int B;
+    static long A;
+    static long B;
 
-    static int answer = 0;
+    static long answer = 0;
 
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         N = kb.nextInt();
-        A = kb.nextInt();
-        B = kb.nextInt();
+        A = kb.nextLong();
+        B = kb.nextLong();
 
         for (int r = 0; r < N; r++) {
             String line = kb.next();
@@ -38,24 +38,24 @@ public class Main {
     }
 
     private static void dijkstra(int startRow, int startCol) {
-        int max = 0;
-        int[][] record = new int[N][N];
+        long max = 0;
+        long[][] record = new long[N][N];
         boolean[][] visited = new boolean[N][N];
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
-                record[r][c] = (int) 1e9;
+                record[r][c] = (long) 1e9;
             }
         }
         record[startRow][startCol] = 0;
         visited[startRow][startCol] = true;
 
-        Queue<Element> pq = new PriorityQueue<>((a, b) -> a.dist - b.dist);
+        Queue<Element> pq = new PriorityQueue<>((a, b) -> (int)(a.dist - b.dist));
         pq.add(new Element(startRow, startCol, 0));
 
         while (!pq.isEmpty()) {
             int minRow = pq.peek().row;
             int minCol = pq.peek().col;
-            int minDist = pq.peek().dist;
+            long minDist = pq.peek().dist;
             pq.poll();
 
             if (record[minRow][minCol] != minDist) continue;
@@ -67,7 +67,7 @@ public class Main {
                 if (nextRow < 0 || N <= nextRow || nextCol < 0 || N <= nextCol) continue;
                 if (visited[nextRow][nextCol]) continue; // 이미 최소거리를 갱신한 곳이라면
 
-                int value = grid[minRow][minCol] == grid[nextRow][nextCol] ? A : B;
+                long value = grid[minRow][minCol] == grid[nextRow][nextCol] ? A : B;
                 if (record[nextRow][nextCol] > minDist + value) {
                     record[nextRow][nextCol] = minDist + value;
 //                    System.out.println(nextRow + " " + nextCol);
@@ -85,8 +85,8 @@ public class Main {
     static class Element {
         int row;
         int col;
-        int dist;
-        Element(int r, int c, int d) {
+        long dist;
+        Element(int r, int c, long d) {
             row = r;
             col = c;
             dist = d;
