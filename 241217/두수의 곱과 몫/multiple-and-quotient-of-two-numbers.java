@@ -5,8 +5,7 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         int a = sc.nextInt();
         int b = sc.nextInt();
-        System.out.println(a*b);
-        System.out.print(a/b);
-
+        System.out.println(a+" * "+b+" = "+a*b);
+        System.out.println(a+" / "+b+" = "+a/b);
     }
 }
