@@ -10,6 +10,9 @@ public class Main {
         }else if (w>=1000)
         {
             System.out.print("mask");
+        }else if (w>=500)
+        {
+            System.out.print("pens");
         }else
         {
             System.out.print("no");
