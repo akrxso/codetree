@@ -12,7 +12,7 @@ public class Main {
             System.out.print("mask");
         }else if (w>=500)
         {
-            System.out.print("pens");
+            System.out.print("pen");
         }else
         {
             System.out.print("no");
