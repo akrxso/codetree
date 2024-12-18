@@ -10,7 +10,7 @@ public class Main {
         }
         else if (n>=100)
         {
-            System.out.print("ice");
+            System.out.print("vapor");
 
         }
         else
