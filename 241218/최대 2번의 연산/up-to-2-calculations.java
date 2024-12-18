@@ -12,5 +12,9 @@ public class Main {
         {
             System.out.print((a+1)/2);
         }
+        else
+        {
+            System.out.print(a);
+        }
     }
 }
