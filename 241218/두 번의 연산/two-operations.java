@@ -10,7 +10,7 @@ public class Main {
         }
         if(a%3 == 0)
         {
-            System.out.print(a);
+            System.out.print(a/3);
         }
     }
 }
