@@ -11,6 +11,9 @@ public class Main {
         if(a%3 == 0)
         {
             System.out.print(a/3);
+        }else
+        {
+            System.out.print(a);
         }
     }
 }
