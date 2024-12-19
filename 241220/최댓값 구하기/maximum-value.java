@@ -10,8 +10,9 @@ public class Main {
         if(max<b)
         {
             max =b;
-        }else if(max<c){
-            max=c;
+        }
+        if(max<c){
+            max = c;
         }
         System.out.print(max);
     }
