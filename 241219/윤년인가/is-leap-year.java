@@ -11,6 +11,10 @@ public class Main {
             System.out.print("false");
             }else
                 System.out.print("true");
+        }else
+        {
+            System.out.print("false");
+
         }
         //100으로 나누어 떨어지되 400으로 나누어 떨어지지 않는 해
     }
