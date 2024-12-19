@@ -7,7 +7,7 @@ public class Main {
         int m1 = 28;
         int m2 = 30;
         int m3 = 31;
-        if(a <=8)
+        if(a <8)
         {
             if(a%2==0&&a!=2)
             {
