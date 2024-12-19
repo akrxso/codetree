@@ -11,7 +11,7 @@ public class Main {
         {
             max =b;
         }else if(max<c){
-            max=c
+            max=c;
         }
         System.out.print(max);
     }
