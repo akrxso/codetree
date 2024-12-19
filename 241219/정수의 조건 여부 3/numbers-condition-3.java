@@ -8,7 +8,7 @@ public class Main {
         System.out.print("True");
         }
         else{
-        System.out.print("False")
+        System.out.print("False");
         }
     }
 }
