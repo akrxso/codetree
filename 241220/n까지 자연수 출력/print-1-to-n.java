@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int i=1;
-        while(i<=10)
+        while(i<=n)
         {
         System.out.print(i+" ");
         i++
