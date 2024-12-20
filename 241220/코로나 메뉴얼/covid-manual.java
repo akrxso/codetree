@@ -13,15 +13,15 @@ public class Main {
         int count =0;
         if(as=='Y'&&at>=37)
         {
-            count++:
+            count++;
         }
         if(bs=='Y'&&bt>=37)
         {
-            count++:
+            count++;
         }
         if(cs=='Y'&&ct>=37)
         {
-            count++:
+            count++;
         }
         
         System.out.print(count>=2?"E":"N");
