@@ -8,18 +8,18 @@ public class Main {
         {
             if(i>=90)
             {
-                System.out.print("A");
+                System.out.print("A ");
             }else if(i>=80)
             {
-                System.out.print("B");
+                System.out.print("B ");
             }else if(i>=70)
             {
-                System.out.print("C");
+                System.out.print("C ");
             }else if(i>=60)
             {
-                System.out.print("D");
+                System.out.print("D ");
             }else
-                System.out.print("F");
+                System.out.print("F ");
         }
     }
 }
