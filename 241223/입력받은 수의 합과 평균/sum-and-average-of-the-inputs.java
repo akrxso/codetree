@@ -10,6 +10,7 @@ public class Main {
             int a = sc.nextInt();
             sum += a;
         }
-        System.out.print(sum + " "+(double)(sum)/n);
+        System.out.print(sum + " ");
+        System.out.printf("%.1f",(double)(sum)/n);
     }
 }
