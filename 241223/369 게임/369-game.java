@@ -8,7 +8,7 @@ public class Main {
             if(i%3==0)
             {
                 System.out.print(0+" ");
-            }else if(i>10)
+            }else if(i>10&&(i%10)!=0)
             {
                 if((i/10)%3==0)
                 {
