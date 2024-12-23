@@ -7,7 +7,7 @@ public class Main {
         int cnt2=0;
         int cnt3=0;
         int cnt12=0;
-        for(int i=1;i<a;i++)
+        for(int i=1;i<=a;i++)
         {
             if(i%12==0)
             {
