@@ -5,10 +5,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
+        int mult =1;
         for(int i=0;i<b;i++)
         {
-            a *= a;
+            mult = mult * a;
         }
-        System.out.print(a);
+        System.out.print(mult);
     }
 }
