@@ -8,10 +8,10 @@ public class Main {
         int a = sc.nextInt();
         if(a<25)
         {
-            System.out.println("Lower");
+            System.out.println("Higher");
         }else if(a>25)
         {
-            System.out.println("Higher");
+            System.out.println("Lower");
         }else
         {
             System.out.println("Good");
