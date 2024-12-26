@@ -8,7 +8,7 @@ public class Main {
         while(true)
         {
         int a = sc.nextInt();
-        if(a<=20||a>=30)
+        if(a<20||a>=30)
         {
             break;
         }
