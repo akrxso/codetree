@@ -7,17 +7,17 @@ public class Main {
         for(int i =0;i<5;i++)
         {
         int a = sc.nextInt();
-        if(a%3==0)
+        if(a%3!=0)
         { 
-            ch = false; //3의 배수면 1
+            ch = false; //3의 배수아닌게 하나라도 있으면 
             break;
         }
         }
         if(ch == true)
         {
-        System.out.print(0);
-        }else{
         System.out.print(1);
+        }else{
+        System.out.print(0);
         }
     }
 }
