@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean ch = true;
-        while(true)
+        for(int i =0;i<5;i++)
         {
         int a = sc.nextInt();
         if(a%3==0)
