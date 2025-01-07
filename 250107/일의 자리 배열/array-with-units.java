@@ -6,10 +6,10 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
         System.out.print(a+" "+b+" ");
-        for(int i=0;i<10;i++)
+        for(int i=0;i<8;i++)
         {
             int temp = a + b;
-            System.out.print(temp%10);
+            System.out.print(temp%10+ " ");
             a = b;
             b = temp;
         }
