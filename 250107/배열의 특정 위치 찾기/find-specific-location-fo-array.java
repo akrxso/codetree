@@ -21,7 +21,8 @@ public class Main {
                 cnt++;
             }
         }
-        System.out.print(sum+" "+avg/cnt);
+        System.out.print(sum+" ");
+        System.out.printf("%.1f",avg/cnt);
         // Please write your code here.
     }
 }
