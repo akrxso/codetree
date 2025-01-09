@@ -23,15 +23,17 @@ public class Main {
             {
                 int b = sc.nextInt();
                 int cnt =0;
+                int c =0;
                 for(int j=0;j<n;j++)
                 {
                     if(arr[j]==b)
                     {
                         cnt = j;
+                        c++;
                         break;
                     }
                 }
-                if(cnt!=0)
+                if(c!=0)
                 {
                 System.out.println(cnt+1);
                 }else{
