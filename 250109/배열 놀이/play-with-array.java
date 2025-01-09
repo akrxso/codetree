@@ -13,6 +13,7 @@ public class Main {
         {
             //1 a
             int a =sc.nextInt();
+            int c =0;
             if(a==1)
             {
                 int b = sc.nextInt();
@@ -20,10 +21,10 @@ public class Main {
                 {
                     if(arr[j]==b)
                     {
-                        System.out.println(j+1);
-                        break;
+                        c =j;
                     }
                 }
+                System.out.println(c+1);
             }else if(a==2)
             {
                 int b = sc.nextInt();
@@ -44,6 +45,7 @@ public class Main {
                 {
                     System.out.print(arr[j]+" ");
                 }
+                System.out.println();
             }
 
 
