@@ -31,7 +31,12 @@ public class Main {
                         break;
                     }
                 }
+                if(cnt!=0)
+                {
                 System.out.println(cnt+1);
+                }else{
+                System.out.println(cnt);
+                }
             }else{
                 int s = sc.nextInt();
                 int e = sc.nextInt();
