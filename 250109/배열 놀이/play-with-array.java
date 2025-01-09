@@ -21,7 +21,7 @@ public class Main {
                 {
                     if(arr[j]==b)
                     {
-                        c =j;
+                        c=j;
                     }
                 }
                 System.out.println(c+1);
@@ -34,10 +34,10 @@ public class Main {
                     cnt++;
                     if(arr[j]==b)
                     {
-                        System.out.println(cnt);
                         break;
                     }
                 }
+                System.out.println(cnt);
             }else{
                 int s = sc.nextInt();
                 int e = sc.nextInt();
