@@ -27,12 +27,12 @@ public class Main {
 
         int b=0;
         boolean t =true;
-        for(;k<=k+b1;k++)
+        for(int l=k;l<l+b1;l++)
         {
             if(arr1[k]!=arr2[b])
             {
                 System.out.println("No");
-                //  System.out.println(arr2[b]);
+                // System.out.println(arr2[b]);
                 t = false;
                 break;
             }
