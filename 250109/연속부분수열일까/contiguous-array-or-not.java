@@ -29,7 +29,7 @@ public class Main {
         boolean t =true;
         for(int l=k;l<l+b1;l++)
         {
-            if(arr1[k]!=arr2[b])
+            if(arr1[l]!=arr2[b])
             {
                 System.out.println("No");
                 // System.out.println(arr2[b]);
