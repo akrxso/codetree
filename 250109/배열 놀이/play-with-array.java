@@ -17,27 +17,21 @@ public class Main {
             if(a==1)
             {
                 int b = sc.nextInt();
-                for(int j=0;j<n;j++)
-                {
-                    if(arr[j]==b)
-                    {
-                        c=j;
-                    }
-                }
-                System.out.println(c+1);
+                System.out.println(arr[b-1]);
+                
             }else if(a==2)
             {
                 int b = sc.nextInt();
                 int cnt =0;
                 for(int j=0;j<n;j++)
                 {
-                    cnt++;
                     if(arr[j]==b)
                     {
+                        cnt = j;
                         break;
                     }
                 }
-                System.out.println(cnt);
+                System.out.println(cnt+1);
             }else{
                 int s = sc.nextInt();
                 int e = sc.nextInt();
