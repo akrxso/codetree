@@ -27,7 +27,7 @@ public class Main {
 
         int b=0;
         boolean t =true;
-        for(int l=k;l<l+b1;l++)
+        for(int l=k;l<k+b1;l++)
         {
             if(arr1[l]!=arr2[b])
             {
