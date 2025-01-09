@@ -13,7 +13,6 @@ public class Main {
         {
             //1 a
             int a =sc.nextInt();
-            int c =0;
             if(a==1)
             {
                 int b = sc.nextInt();
