@@ -26,7 +26,7 @@ public class Main {
 
         int b=0;
         boolean t =true;
-        for(;k<=b1;k++)
+        for(;k<k+b1;k++)
         {
             if(arr1[k]!=arr2[b])
             {
@@ -35,7 +35,7 @@ public class Main {
                 t = false;
                 break;
             }
-            System.out.println(arr2[b]);
+            // System.out.println(arr2[b]);
             b++;
         }
         if(t)
