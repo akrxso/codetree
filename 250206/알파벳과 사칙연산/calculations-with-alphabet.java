@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Main {
 
-    static final int MAX_SIZE = 'f' - 'a';
+    static final int MAX_SIZE = 'f' - 'a' + 1;
 
     static int[] arr;
     
