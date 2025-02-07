@@ -24,7 +24,7 @@ public class Main {
     }
 
     static void findComb(int curIdx, int cnt) {
-        if (curIdx == N) {
+        if (curIdx == N || cnt == M) {
             if (cnt == M) {
                 max = Math.max(max, getXor());
             }
