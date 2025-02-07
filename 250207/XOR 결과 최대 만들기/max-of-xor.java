@@ -4,6 +4,7 @@ public class Main {
 
     static int N;
     static int M;
+
     static List<Integer> numbers = new ArrayList<>();
     static List<Integer> combination = new ArrayList<>();
 
@@ -18,27 +19,21 @@ public class Main {
             numbers.add(kb.nextInt());
         }
 
-        findComb(0, 0);
-
+        findCombination(0, 0);
         System.out.println(max);
     }
 
-    static void findComb(int curIdx, int cnt) {
-        if (curIdx == N || cnt == M) {
-            if (cnt == M) {
-                max = Math.max(max, getXor());
-            }
+    static void findCombination(int curCnt, int lastIdx) {
+        if (curCnt == M) {
+            max = Math.max(max, getXor());
             return;
         }
 
-        // 현재 숫자를 넣는다면
-        combination.add(numbers.get(curIdx));
-        findComb(curIdx + 1, cnt + 1);
-        // 현재 숫자를 넣어주었으니 다시 지워줘야 한다.
-        combination.remove(combination.size() - 1);
-
-        // 현재 숫자는 안넣고 지나간다
-        findComb(curIdx + 1, cnt);
+        for (int i = lastIdx; i < N; i++) {
+            combination.add(numbers.get(i));
+            findCombination(curCnt + 1, i + 1);
+            combination.remove(combination.size() - 1);
+        }
     }
 
     static int getXor() {
