@@ -2,53 +2,47 @@ import java.util.*;
 
 public class Main {
 
-    static int N;
-    static int LIMIT;
+    static final int MAX_N = 10;
 
-    static List<Integer> arr = new ArrayList<>();
-    static List<Integer> indexComb = new ArrayList<>();
-    static int sum = 0;
-    static int min = Integer.MAX_VALUE;
+    static int N;
+    static int[] num = new int [2 * MAX_N];
+    static boolean[] visited = new boolean[2 * MAX_N]; 
+
+    static int ans = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         N = kb.nextInt();
-        LIMIT = N * 2;
 
-        for (int i = 0; i < LIMIT; i++) {
-            arr.add(kb.nextInt());
+        for (int i = 0; i < 2 * N; i++) {
+            num[i] = kb.nextInt();
         }
-        for (int i = 0; i < LIMIT; i++) {
-            sum += arr.get(i);
-        }
-        getCombination(0, 0);
-        System.out.println(min);
+        findMin(0, 0);
+        System.out.println(ans);
     }
 
-    static void getCombination(int curIdx, int lastNumber) {
-        // 기저조건
-        if (curIdx == N) {
-            int result = getResult();
-            int other = sum - getResult();
-            min = Math.min(min, Math.abs(result - other));
+    static void findMin(int idx, int cnt) {
+        if (idx == 2 * N) {
+            return;
+        }
+        if (cnt == N) {
+            ans = Math.min(ans, getResult());
             return;
         }
 
-        for (int i = lastNumber; i < LIMIT; i++) {
-            indexComb.add(i);
-            getCombination(curIdx + 1, i + 1);
-            indexComb.remove(indexComb.size() - 1);
-        }
+        visited[idx] = true;
+        findMin(idx + 1, cnt + 1);
+        visited[idx] = false;
+
+        findMin(idx + 1, cnt);
     }
 
     static int getResult() {
-        int valueSum = 0;
+        int diff = 0;
 
-        for (int i = 0; i < N; i++) {
-            int idx = indexComb.get(i);
-            valueSum += arr.get(idx);
+        for (int i = 0; i < 2 * N; i++) {
+            diff = (visited[i] ? diff + num[i] : diff - num[i]);
         }
-        return valueSum;
+        return Math.abs(diff);
     }
-
 }
