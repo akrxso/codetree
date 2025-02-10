@@ -7,7 +7,10 @@ public class Main {
     static List<Pair> pairs = new ArrayList<>();
     static List<Pair> combination = new ArrayList<>();
 
+    static List<Pair> results = new ArrayList<>();
+
     static int ans = Integer.MAX_VALUE;
+    static int max;
 
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
@@ -24,10 +27,13 @@ public class Main {
         System.out.println(ans);
     }
 
+    // combination 배열의 curIdx
     static void getMin(int curIdx, int lastIndex) {
-        if (curIdx == 2) {
-            // System.out.println(combination);
-            ans = Math.min(ans, calc());
+        if (curIdx == M) {
+            // System.out.println("combination: " + combination + " >>>");
+            max = Integer.MIN_VALUE;
+            calc(0, 0);
+            ans = Math.min(ans, max);
             return;
         }
 
@@ -39,15 +45,30 @@ public class Main {
         }
     }
 
-    static int calc() {
-        Pair one = combination.get(0);
-        Pair other = combination.get(1);
+    static void calc(int curIdx, int cnt) {
+        if (cnt == 2) {
+            // System.out.println(results);
+            Pair one = results.get(0);
+            Pair other = results.get(1);
+            int x = Math.abs(one.x - other.x);
+            int y = Math.abs(one.y - other.y);
+            max = Math.max(max, (x * x) + (y * y));
+            return;
+        }
 
-        int x = Math.abs(one.x - other.x);
-        int y = Math.abs(one.y - other.y);
+        if (curIdx == M) {
+            return;
+        }
 
-        return (x * x) + (y * y);
+        Pair curPair = combination.get(curIdx);
+        results.add(curPair);
+        calc(curIdx + 1, cnt + 1);
+        results.remove(results.size() - 1);
+
+        calc(curIdx + 1, cnt);
     }
+
+
 
     static class Pair {
         int x;
