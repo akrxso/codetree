@@ -23,17 +23,21 @@ public class Main {
             adjMatrix[start][end] = adjMatrix[end][start] = 1;
         }
         visited[1] = true;
-        dfs(1, 0);
-        System.out.println(max);   
+        dfs(1);
+        
+        int cnt = 0;
+        for (int i = 2; i < visited.length; i++) {
+            if (visited[i]) cnt++;
+        }
+
+        System.out.println(cnt);
     }
 
-    static void dfs(int vertex, int cnt) {
-        max = Math.max(max, cnt);
-
+    static void dfs(int vertex) {
         for (int next = 1; next <= N; next++) {
             if (adjMatrix[vertex][next] == 1 & !visited[next]) {
                 visited[next] = true;
-                dfs(next, cnt + 1);
+                dfs(next);
             }
         }
     }
