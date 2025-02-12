@@ -23,8 +23,10 @@ public class Main {
             }
         }
 
+        visited[0][0] = true;
         dfs(0, 0);
-        if (visited[N - 1][N - 1]) {
+
+        if (visited[N - 1][M - 1]) {
             System.out.println("1");
         }
         else {
