@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Main {
 
+    static final int MOD = 10_007;
     static final int MAX_N = 1000;
     static final int UNUSED = -1;
 
@@ -28,6 +29,6 @@ public class Main {
             return memo[n];
         }
 
-        return memo[n] = dp(n - 2) + dp(n - 3);
+        return memo[n] = (dp(n - 2) + dp(n - 3)) % MOD;
     }
 }
