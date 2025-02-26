@@ -3,6 +3,7 @@ import java.util.*;
 public class Main {
     static final int MAX_N = 100;
     static int[][] maze = new int[MAX_N][MAX_N];
+    static boolean[][] visited = new boolean[MAX_N][MAX_N];
     
     static int n;
     static int startRow;
@@ -30,6 +31,7 @@ public class Main {
         
         int curRow = startRow;
         int curCol = startCol;
+        visited[curRow][curCol] = true;
 
         while (true) {
             int nextRow = curRow + dr[curDir];
@@ -49,24 +51,28 @@ public class Main {
                 int blockCol = nextCol + dc[blockDir];
                 // 경계 처리 해야 하나?
                 if (maze[blockRow][blockCol] == 1) { // 벽이 있으면 한 칸 그대로 이동
+                    if (visited[nextRow][nextCol]) {
+                        cnt = -1;
+                        break;
+                    }
                     curRow = nextRow;
                     curCol = nextCol;
+                    visited[curRow][curCol] = true;
                     cnt++;
                 }
                 else { // 벽이 없다면
+                    if (visited[blockRow][blockCol]) {
+                        cnt = -1;
+                        break;
+                    }
                     curRow = blockRow;
                     curCol = blockCol;
                     curDir = blockDir;
+                    visited[curRow][curCol] = true;
                     cnt += 2;
                 }
             }
-
-            if (cnt > n * n) {
-                cnt = -1;
-                break;
-            }
         }
         System.out.println(cnt);
-
     }
 }
