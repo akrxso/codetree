@@ -59,6 +59,8 @@ public class Main {
         row = kb.nextInt() - 1;
         col = kb.nextInt() - 1;
 
+        grid[row][col] = 1;
+
         int dist = 1;
         for (int i = 0; i < m; i++) {
             simulate(dist);
