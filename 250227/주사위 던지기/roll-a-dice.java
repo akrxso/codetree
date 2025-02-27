@@ -1,133 +1,121 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
 
+    static final int DIR_NUM = 4;
+    static final int ASCII_NUM = 128;
     static final int MAX_N = 100;
-    static final int MAX_M = 10_000;
-    static final int SEVEN = 7;
+    static final Pair OUT_OF_GRID = new Pair(-1, -1);
+
+    static int n;
+    static int m;
+    static int row, col;
 
     static int[][] grid = new int[MAX_N][MAX_N];
-    static String[] directions = new String[MAX_M];
-    static int[][] dice = new int[3][3];
 
-    static int N;
-    static int M;
-    static int startRow;
-    static int startCol;
+    static int u = 1, f = 2, r = 3;
 
-    static int[] dr = {0, 0, -1, 1};
-    static int[] dc = {-1, 1, 0, 0};
+    static boolean inRange(int row, int col) {
+        return 0 <= row && row < n && 0 <= col && col < n;
+    }
+
+    static void simulate(int moveDir) {
+        // moveDir 방향으로 굴렸을 때의 격자상의 위치를 구한다.
+        Pair nextPos = nextPos(row, col, moveDir);
+        // 불리는 것이 불가능하면 패스한다.
+        if (nextPos.r == OUT_OF_GRID.r && nextPos.c == OUT_OF_GRID.c) {
+            return;
+        }
+
+        // 위치를 이동한다
+        row = nextPos.r;
+        col = nextPos.c;
+
+        // 주사위의 상태를 조정한다.
+        if (moveDir == 0) { //오른쪽
+            int next_u = 7 - r;
+            int next_f = f;
+            int next_r = u;
+            u = next_u;
+            f = next_f;
+            r = next_r;
+        }
+        if (moveDir == 1) { //왼쪽
+            int next_u = r;
+            int next_f = f;
+            int next_r = 7 - u;
+            u = next_u;
+            f = next_f;
+            r = next_r;
+        }
+        if (moveDir == 2) {// 위쪽
+            int next_u = f;
+            int next_f = 7 - u;
+            int next_r = r;
+            u = next_u;
+            f = next_f;
+            r = next_r;
+        }
+        if (moveDir == 3) {
+            int next_u = 7 - f;
+            int next_f = u;
+            int next_r = r;
+            u = next_u;
+            f = next_f;
+            r = next_r;
+        }
+
+        int down = 7 - u;
+        grid[row][col] = down;
+    }
 
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
-        N = kb.nextInt();
-        M = kb.nextInt();
-        startRow = kb.nextInt() - 1;
-        startCol = kb.nextInt() - 1;
+        n = kb.nextInt();
+        m = kb.nextInt();
+        row = kb.nextInt() - 1;
+        col = kb.nextInt() - 1;
 
-        for (int i = 0; i < M; i++) {
-            directions[i] = kb.next();
-        }
-        // 주사위 세팅
-        dice[1][1] = 6;
-        dice[1][0] = 4;
-        dice[1][2] = 3;
-        dice[0][1] = 5;
-        dice[2][1] = 2;
+        int[] dirMapper = new int[ASCII_NUM];
+        dirMapper['R'] = 0;
+        dirMapper['L'] = 1;
+        dirMapper['U'] = 2;
+        dirMapper['D'] = 3;
 
-        int currRow = startRow;
-        int currCol = startCol;
-        grid[currRow][currCol] = dice[1][1];
+        // 시뮬레이션 진행
+        grid[row][col] = 6;
+        for (int i = 0; i < m; i++) {
+            char charDir = kb.next().charAt(0);
 
-        for (int k = 0; k < M; k++) {
-            String direction = directions[k];
-            if ("L".equals(direction)) {
-                int nextRow = currRow + dr[0];
-                int nextCol = currCol + dc[0];
-                if (!inRange(nextRow, nextCol)) continue;
-
-                // 다이스 바꿔주고
-                int ops = SEVEN - dice[1][1];
-                for (int i = 2; i > 0; i--) {
-                    dice[1][i] = dice[1][i - 1];
-                }
-                dice[1][0] = ops;
-                // 현재 위치 바꿔주고
-                currRow = nextRow;
-                currCol = nextCol;
-                // 현재 위치에 바닥 다이스 값을 적어준다.
-                grid[currRow][currCol] = dice[1][1];
-            }
-            if ("R".equals(direction)) {
-                int nextRow = currRow + dr[1];
-                int nextCol = currCol + dc[1];
-                if (!inRange(nextRow, nextCol)) continue;
-
-                // 다이스 바꿔주고
-                int ops = SEVEN - dice[1][1];
-                for (int i = 0; i < 2; i++) {
-                    dice[1][i] = dice[1][i + 1];
-                }
-                dice[1][2] = ops;
-                // 현재 위치 바꿔주고
-                currRow = nextRow;
-                currCol = nextCol;
-                // 현재 위치에 바닥 다이스 값을 적어준다.
-                grid[currRow][currCol] = dice[1][1];
-            }
-            if ("U".equals(direction)) {
-                int nextRow = currRow + dr[2];
-                int nextCol = currCol + dc[2];
-                if (!inRange(nextRow, nextCol)) continue;
-
-                int ops = SEVEN - dice[1][1];
-                for (int i = 2; i > 0; i--) {
-                    dice[i][1] = dice[i - 1][1];
-                }
-                dice[0][1] = ops;
-                currRow = nextRow;
-                currCol = nextCol;
-                grid[currRow][currCol] = dice[1][1];
-            }
-            if ("D".equals(direction)) {
-                // printDice();
-                // System.out.println("-----");
-                int nextRow = currRow + dr[3];
-                int nextCol = currCol + dc[3];
-                if (!inRange(nextRow, nextCol)) continue;
-
-                int ops = SEVEN - dice[1][1];
-                for (int i = 0; i < 2; i++) {
-                    dice[i][1] = dice[i + 1][1];
-                }
-                dice[2][1] = ops;
-                currRow = nextRow;
-                currCol = nextCol;
-                grid[currRow][currCol] = dice[1][1];
-
-                // printDice();
-            }
+            simulate(dirMapper[charDir]);
         }
 
-        int cnt = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                cnt += grid[i][j];
+        int ans = 0;
+        for (int r = 0; r < n; r++) {
+            for (int c = 0; c < n; c++) {
+                ans += grid[r][c];
             }
         }
-        System.out.println(cnt);
+        System.out.println(ans);
     }
 
-    static boolean inRange(int row, int col) {
-        return 0 <= row && row < N && 0 <= col && col < N;
+    static Pair nextPos(int r, int c, int moveDir) {
+        int[] dr = new int[] {0, 0, -1, 1};
+        int[] dc = new int[] {1, -1, 0, 0};
+        int nr = r + dr[moveDir];
+        int nc = c + dc[moveDir];
+
+        if (inRange(nr, nc)) {
+            return new Pair(nr, nc);
+        }
+        return OUT_OF_GRID;
     }
 
-    static void printDice() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(dice[i][j] + " ");
-            }
-            System.out.println();
+    static class Pair {
+        int r, c;
+        Pair(int r, int c) {
+            this.r = r;
+            this.c = c;
         }
     }
 }
