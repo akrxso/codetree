@@ -29,7 +29,7 @@ public class Main {
         dijk(1);
 
         for (int i = 2; i <= N; i++) {
-            System.out.println(result[i]);
+            System.out.println(result[i] == Integer.MAX_VALUE ? -1 : result[i]);
         }
     }
 
