@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Main {
     static final int MAX_N = 20_000;
+    static final int INF = (int)1e9;
     
 
     static int N;
@@ -20,7 +21,7 @@ public class Main {
         for (int i = 1; i <= N; i++) {
             graph[i] = new ArrayList<>();
         }
-        Arrays.fill(dist, (int)1e9);
+        Arrays.fill(dist, INF);
 
         for (int i = 0; i < M; i++) {
             int start = kb.nextInt();
@@ -33,7 +34,7 @@ public class Main {
 
         dijk(K);
         for (int i = 1; i <= N; i++) {
-            System.out.println(dist[i]);
+            System.out.println(dist[i] == INF ? -1 : dist[i]);
         }
     }
 
