@@ -10,8 +10,8 @@ public class Main {
     static int N;
 
     static void init() {
+        // 현재 위치에서 시작할 때에는 dp 값이 1이 되므로 초기 세팅은 1이다.
         Arrays.fill(dp, 0, N + 1, 1);
-        dp[0] = 0;
         arr[0] = 0;
     }
 
