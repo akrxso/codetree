@@ -34,9 +34,9 @@ public class Main {
                 for (int[] line : list) {
                     int start = line[0];
                     int end = line[1];
-                    int max = Math.max(dp[i - 1], dp[start - 1] + 1);
+                    dp[i] = Math.max(dp[i - 1], dp[start - 1] + 1);
 
-                    dp[i] = Math.max(dp[i], max);
+//                    dp[i] = Math.max(dp[i], max);
                 }
             } else {
                 dp[i] = dp[i - 1];
