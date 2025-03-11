@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,14 +34,23 @@ public class Main {
                 for (int[] line : list) {
                     int start = line[0];
                     int end = line[1];
-                    dp[i] = Math.max(dp[i], dp[start - 1] + 1);
+                    int max = Math.max(dp[i - 1], dp[start - 1] + 1);
+
+                    dp[i] = Math.max(dp[i], max);
                 }
             } else {
                 dp[i] = dp[i - 1];
             }
         }
 
-//        for (int i = 0; i <= 10; i++) {
+//        for (int i = 0; i <= 1000; i++) {
+//            for (int[] tmp : lines[i]) {
+//                System.out.print(Arrays.toString(tmp) + " ");
+//            }
+//            System.out.println();
+//        }
+
+//        for (int i = 0; i <= 1000; i++) {
 //            System.out.print(dp[i] + " ");
 //        }
 
